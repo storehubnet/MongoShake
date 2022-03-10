@@ -197,7 +197,13 @@ func IgnoreError(err error, op string, isFullSyncStage bool) bool {
 		case "i":
 		case "u":
 			if isFullSyncStage {
-				if err == 28 { // PathNotViable
+                                if err == 28 || err == 211 { // PathNotViable
+					continue
+				}
+			}
+		case "ui":
+			if isFullSyncStage {
+				if err == 11000 { // duplicate key
 					continue
 				}
 			}
